@@ -17,13 +17,13 @@ public class CategoryService {
         CategoryService.categoryRepo = categoryRepo;
     }
 
-    public static void createCategory(Category category) {
+    public static void saveCategory(Category category) {
         categoryRepo.save(category);
     }
 
-    public static void updateCategory(Category category) {
+    /*public static void updateCategory(Category category) {
         categoryRepo.save(category);
-    }
+    }*/
 
     public static void deleteCategory(Category category) {
         categoryRepo.delete(category);

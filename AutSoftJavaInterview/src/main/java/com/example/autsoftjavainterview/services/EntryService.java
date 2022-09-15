@@ -16,13 +16,13 @@ public class EntryService {
         EntryService.entryRepo = entryRepo;
     }
 
-    public static void createEntry(Entry entry) {
+    public static void saveEntry(Entry entry) {
         entryRepo.save(entry);
     }
 
-    public static void updateEntry(Entry entry) {
+    /*public static void updateEntry(Entry entry) {
         entryRepo.save(entry);
-    }
+    }*/
 
     public static void deleteEntry(Entry entry) {
         entryRepo.delete(entry);
