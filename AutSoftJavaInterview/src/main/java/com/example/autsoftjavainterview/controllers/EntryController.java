@@ -21,7 +21,7 @@ public class EntryController {
             return ResponseEntity.ok(entries);
     }
 
-    @GetMapping("/entry/{title}")
+    @GetMapping("/entry/title={title}")
     public ResponseEntity<Entry> getByTitle(@PathVariable String title) {
         Entry entry = EntryService.getByTitle(title);
 
@@ -31,7 +31,7 @@ public class EntryController {
             return ResponseEntity.ok(entry);
     }
 
-    @GetMapping("/entry/{id}")
+    @GetMapping("/entry/id={id}")
     public ResponseEntity<Entry> getById(@PathVariable Long id) {
         Entry entry = EntryService.getById(id);
 

@@ -2,7 +2,6 @@ package com.example.autsoftjavainterview.controllers;
 
 import com.example.autsoftjavainterview.model.Category;
 import com.example.autsoftjavainterview.services.CategoryService;
-import com.example.autsoftjavainterview.services.EntryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +21,7 @@ public class CategoryController {
             return ResponseEntity.ok(categories);
     }
 
-    @GetMapping("/category/{name}")
+    @GetMapping("/category/name={name}")
     public  ResponseEntity<Category> getByName(@PathVariable String name) {
         Category category = CategoryService.getByName(name);
 
@@ -32,7 +31,7 @@ public class CategoryController {
             return ResponseEntity.ok(category);
     }
 
-    @GetMapping("/category/{id}")
+    @GetMapping("/category/id={id}")
     public ResponseEntity<Category> getById(@PathVariable Long id) {
         Category category = CategoryService.getById(id);
 
@@ -44,6 +43,13 @@ public class CategoryController {
 
     @PostMapping("/category")
     public ResponseEntity<Category> newCategory(@RequestBody Category category) {
+        List<String> hashtags = List.of(category.getHashtags().split("\\s*,\\s*"));
+
+        for (String s : hashtags) {
+            if (!s.isBlank() && (s.length() > 10 || s.length() < 3))
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
         try {
             CategoryService.saveCategory(category);
         } catch (Exception e) {

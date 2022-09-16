@@ -2,7 +2,6 @@ package com.example.autsoftjavainterview.services;
 
 import com.example.autsoftjavainterview.dao.CategoryRepo;
 import com.example.autsoftjavainterview.model.Category;
-import com.example.autsoftjavainterview.model.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +19,6 @@ public class CategoryService {
     public static void saveCategory(Category category) {
         categoryRepo.save(category);
     }
-
-    /*public static void updateCategory(Category category) {
-        categoryRepo.save(category);
-    }*/
 
     public static void deleteCategory(Category category) {
         categoryRepo.delete(category);

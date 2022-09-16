@@ -20,10 +20,6 @@ public class EntryService {
         entryRepo.save(entry);
     }
 
-    /*public static void updateEntry(Entry entry) {
-        entryRepo.save(entry);
-    }*/
-
     public static void deleteEntry(Entry entry) {
         entryRepo.delete(entry);
     }

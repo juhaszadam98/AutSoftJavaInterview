@@ -1,6 +1,10 @@
 package com.example.autsoftjavainterview.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.Set;
 
 @Entity
@@ -16,11 +20,13 @@ public class Entry {
     @Column(name = "postBody")
     private String postBody;
 
-    @Column(name = "added")
-    private String added;       //"yyyy-mm-dd"
+    @Column(name = "added", updatable = false)
+    @CreationTimestamp
+    private Date added;
 
     @Column(name = "modified")
-    private String modified;       //"yyyy-mm-dd"
+    @UpdateTimestamp
+    private Date modified;
 
     @ManyToMany(mappedBy = "entries")
     private Set<Category> categories;
@@ -51,19 +57,19 @@ public class Entry {
         this.postBody = postBody;
     }
 
-    public String getAdded() {
+    public Date getAdded() {
         return added;
     }
 
-    public void setAdded(String added) {
+    public void setAdded(Date added) {
         this.added = added;
     }
 
-    public String getModified() {
+    public Date getModified() {
         return modified;
     }
 
-    public void setModified(String modified) {
+    public void setModified(Date modified) {
         this.modified = modified;
     }
 }
